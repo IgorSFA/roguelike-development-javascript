@@ -2,6 +2,7 @@ import dungeon from "./dungeon.js"
 
 export default class PlayerCharacter {
     constructor(x, y) {
+        this.maxMovementsPoints = 1
         this.movementPoints = 1
         this.cursors = dungeon.scene.input.keyboard.createCursorKeys()
         this.x = x
@@ -11,8 +12,12 @@ export default class PlayerCharacter {
         dungeon.map.putTileAt(this.sprite, this.x, this.y)
     }
 
+    setMaxMovementPoints(points) {
+        this.maxMovementsPoints = points;
+    }
+
     refresh() {
-        this.movementPoints = 1
+        this.movementPoints = this.maxMovementsPoints
     }
 
     turn() {
